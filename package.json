@@ -1,0 +1,25 @@
+{
+  "name": "qapro-cypress-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:login:bdd",
+    "test:login:bdd": "node scripts/run-cypress-with-logging.js",
+    "test:login:bdd:headed": "cypress run --e2e --browser electron --spec \"cypress/e2e/login-bdd.cy.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cypress": "^15.17.0"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^25.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "esbuild": "^0.28.1",
+    "mochawesome": "^7.1.4"
+  }
+}

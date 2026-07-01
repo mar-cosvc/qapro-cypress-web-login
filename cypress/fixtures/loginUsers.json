@@ -1,0 +1,22 @@
+{
+  "validUser": {
+    "email": "admin@admin.com",
+    "password": "admin"
+  },
+  "invalidPassword": {
+    "email": "admin@admin.com",
+    "password": "wrong-password"
+  },
+  "invalidUser": {
+    "email": "naoexiste@example.com",
+    "password": "123456"
+  },
+  "sqlInjection": {
+    "email": "admin@admin.com' OR '1'='1",
+    "password": "anything"
+  },
+  "emptyFields": {
+    "email": "",
+    "password": ""
+  }
+}

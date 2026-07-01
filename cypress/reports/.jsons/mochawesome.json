@@ -1,0 +1,202 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-07-01T22:35:50.930Z",
+    "end": "2026-07-01T22:36:20.757Z",
+    "duration": 29827,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fb9e0c8e-a654-453b-943d-d16a512efdce",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login.cy.js",
+      "file": "cypress\\e2e\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d97e2668-f446-405d-ba27-9206aa463e20",
+          "title": "Cenários de login em BDD-like Cypress",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC01 - login com credenciais válidas",
+              "fullTitle": "Cenários de login em BDD-like Cypress TC01 - login com credenciais válidas",
+              "timedOut": null,
+              "duration": 14401,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#user').clear().type(users.validUser.email);\ncy.get('#password').clear().type(users.validUser.password);\ncy.get('#btnLogin').click();\ncy.location('pathname', {\n  timeout: 10000\n}).should('eq', '/login');\ncy.get('body').then($body => {\n  const text = $body.text().toLowerCase();\n  const hasFeedback = text.includes('login') || text.includes('erro') || text.includes('senha') || text.includes('e-mail');\n  expect(hasFeedback).to.be.true;\n});",
+              "err": {},
+              "uuid": "8ac53601-774c-4286-818a-2cdc17443809",
+              "parentUUID": "d97e2668-f446-405d-ba27-9206aa463e20",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC02 - login com senha inválida",
+              "fullTitle": "Cenários de login em BDD-like Cypress TC02 - login com senha inválida",
+              "timedOut": null,
+              "duration": 4636,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#user').clear().type(users.invalidPassword.email);\ncy.get('#password').clear().type(users.invalidPassword.password);\ncy.get('#btnLogin').click();\ncy.location('pathname', {\n  timeout: 10000\n}).then(pathname => {\n  expect(pathname === '/login' || pathname === '/my-account').to.be.true;\n});\ncy.get('body').then($body => {\n  const text = $body.text().toLowerCase();\n  expect(text.length).to.be.greaterThan(0);\n});",
+              "err": {},
+              "uuid": "3176f881-a0e7-4d93-9ab5-65d8b8e1e57e",
+              "parentUUID": "d97e2668-f446-405d-ba27-9206aa463e20",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC03 - login com usuário inexistente",
+              "fullTitle": "Cenários de login em BDD-like Cypress TC03 - login com usuário inexistente",
+              "timedOut": null,
+              "duration": 2163,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#user').clear().type(users.invalidUser.email);\ncy.get('#password').clear().type(users.invalidUser.password);\ncy.get('#btnLogin').click();\ncy.location('pathname', {\n  timeout: 10000\n}).then(pathname => {\n  expect(pathname === '/login' || pathname === '/my-account').to.be.true;\n});\ncy.get('body').then($body => {\n  const text = $body.text().toLowerCase();\n  expect(text).to.include('login');\n});",
+              "err": {},
+              "uuid": "9427f50b-fb7b-4712-acfc-ed24719cf48a",
+              "parentUUID": "d97e2668-f446-405d-ba27-9206aa463e20",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC04 - login com campos vazios",
+              "fullTitle": "Cenários de login em BDD-like Cypress TC04 - login com campos vazios",
+              "timedOut": null,
+              "duration": 1716,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#user').clear();\ncy.get('#password').clear();\ncy.get('#btnLogin').click();\ncy.get('#user').should('be.visible');\ncy.get('#password').should('be.visible');\ncy.get('#btnLogin').should('be.enabled');",
+              "err": {},
+              "uuid": "163e0144-c763-4791-abc2-11281f300e37",
+              "parentUUID": "d97e2668-f446-405d-ba27-9206aa463e20",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC05 - SQL Injection",
+              "fullTitle": "Cenários de login em BDD-like Cypress TC05 - SQL Injection",
+              "timedOut": null,
+              "duration": 3126,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#user').clear().type(users.sqlInjection.email);\ncy.get('#password').clear().type(users.sqlInjection.password);\ncy.get('#btnLogin').click();\ncy.location('pathname', {\n  timeout: 10000\n}).then(pathname => {\n  expect(pathname === '/login' || pathname === '/my-account').to.be.true;\n});\ncy.get('#user').should('be.visible');\ncy.get('#password').should('be.visible');",
+              "err": {},
+              "uuid": "67c8090c-0260-4b66-baa8-f0a700687d21",
+              "parentUUID": "d97e2668-f446-405d-ba27-9206aa463e20",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC06 - usabilidade e acessibilidade básica",
+              "fullTitle": "Cenários de login em BDD-like Cypress TC06 - usabilidade e acessibilidade básica",
+              "timedOut": null,
+              "duration": 2152,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#user').should('be.visible').and('have.attr', 'type', 'text');\ncy.get('#password').should('be.visible').and('have.attr', 'type', 'password');\ncy.get('#btnLogin').should('be.visible').and('contain.text', 'login');\ncy.get('label').contains('E-mail').should('be.visible');\ncy.get('label').contains('Senha').should('be.visible');",
+              "err": {},
+              "uuid": "5912ce56-6337-41ae-933f-4e20bd7251a5",
+              "parentUUID": "d97e2668-f446-405d-ba27-9206aa463e20",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8ac53601-774c-4286-818a-2cdc17443809",
+            "3176f881-a0e7-4d93-9ab5-65d8b8e1e57e",
+            "9427f50b-fb7b-4712-acfc-ed24719cf48a",
+            "163e0144-c763-4791-abc2-11281f300e37",
+            "67c8090c-0260-4b66-baa8-f0a700687d21",
+            "5912ce56-6337-41ae-933f-4e20bd7251a5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 28194,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
