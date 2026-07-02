@@ -1,0 +1,221 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-07-02T00:42:28.374Z",
+    "end": "2026-07-02T00:42:55.734Z",
+    "duration": 27360,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b581a7dc-76af-43bf-8827-6944649b9ae9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\checkout.cy.js",
+      "file": "cypress\\e2e\\checkout.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+          "title": "Checkout - Page Object (enxuto com overrides)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC01 - cadastro válido (faker inputs)",
+              "fullTitle": "Checkout - Page Object (enxuto com overrides) TC01 - cadastro válido (faker inputs)",
+              "timedOut": null,
+              "duration": 5146,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = {\n  firstName: faker.person.firstName(),\n  lastName: faker.person.lastName(),\n  company: faker.company.name(),\n  email: faker.internet.email(),\n  zip: faker.location.zipCode('#####'),\n  address: faker.location.streetAddress(),\n  notes: faker.lorem.sentence()\n};\ncheckoutPage.fillBillingInfo(_objectSpread(_objectSpread({}, fixtures.validBilling), data));\ncheckoutPage.submit();\ncheckoutPage.assertSuccessfulSubmission();",
+              "err": {},
+              "uuid": "321788af-9325-4084-af97-67d2fce45682",
+              "parentUUID": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC02 - cadastro com overrides (faker email e zip)",
+              "fullTitle": "Checkout - Page Object (enxuto com overrides) TC02 - cadastro com overrides (faker email e zip)",
+              "timedOut": null,
+              "duration": 3472,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const overrides = {\n  email: faker.internet.email(),\n  zip: faker.location.zipCode('#####')\n};\ncheckoutPage.fillBillingInfo(_objectSpread(_objectSpread({}, fixtures.validBilling), overrides));\ncheckoutPage.submit();\ncheckoutPage.assertSuccessfulSubmission();",
+              "err": {},
+              "uuid": "c7b81a28-42ea-4ff8-a51a-bd5636da5be4",
+              "parentUUID": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC03 - campos obrigatórios faltando (deve exibir erro)",
+              "fullTitle": "Checkout - Page Object (enxuto com overrides) TC03 - campos obrigatórios faltando (deve exibir erro)",
+              "timedOut": null,
+              "duration": 3074,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = _objectSpread(_objectSpread({}, fixtures.validBilling), {}, {\n  lastName: '',\n  firstName: ''\n});\n// other fields populated with faker\ndata.email = faker.internet.email();\ndata.company = faker.company.name();\ncheckoutPage.fillBillingInfo(data);\ncheckoutPage.submit();\ncheckoutPage.assertValidationError();",
+              "err": {},
+              "uuid": "c40dfe04-b73d-4091-9eb7-012077771386",
+              "parentUUID": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC04 - email inválido",
+              "fullTitle": "Checkout - Page Object (enxuto com overrides) TC04 - email inválido",
+              "timedOut": null,
+              "duration": 2853,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "checkoutPage.fillBillingInfo(_objectSpread(_objectSpread({}, fixtures.validBilling), {}, {\n  email: 'invalid-email'\n}));\ncheckoutPage.submit();\ncheckoutPage.assertValidationError();",
+              "err": {},
+              "uuid": "210631d0-6a2b-41fd-9119-99500583e1e3",
+              "parentUUID": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC05 - entradas longas (faker)",
+              "fullTitle": "Checkout - Page Object (enxuto com overrides) TC05 - entradas longas (faker)",
+              "timedOut": null,
+              "duration": 10112,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const long = faker.lorem.words(80);\ncheckoutPage.fillBillingInfo(_objectSpread(_objectSpread({}, fixtures.validBilling), {}, {\n  firstName: long,\n  lastName: long,\n  company: long,\n  address: long,\n  notes: faker.lorem.paragraph()\n}));\ncheckoutPage.submit();\ncheckoutPage.assertValidationError();",
+              "err": {},
+              "uuid": "6de9c6be-73c6-4ef3-a5f8-6219d00cd473",
+              "parentUUID": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC06 - newsletter e links (faker)",
+              "fullTitle": "Checkout - Page Object (enxuto com overrides) TC06 - newsletter e links (faker)",
+              "timedOut": null,
+              "duration": 1475,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "checkoutPage.fillNewsletter(faker.internet.email());\ncheckoutPage.assertButtonExists(/send mail|subscribe|submit/i);\ncheckoutPage.assertLinkExists('/shop');",
+              "err": {},
+              "uuid": "38f03502-176c-4a63-92f7-dd810c47de0e",
+              "parentUUID": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC07 - elementos clicáveis e payments",
+              "fullTitle": "Checkout - Page Object (enxuto com overrides) TC07 - elementos clicáveis e payments",
+              "timedOut": null,
+              "duration": 679,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "checkoutPage.assertButtonExists(/place order|save|checkout|pay/i);\ncheckoutPage.selectPayment('HTML');\ncheckoutPage.assertFieldVisible('#fname');",
+              "err": {},
+              "uuid": "a45389e1-ead7-45d4-8157-250a9df9ffef",
+              "parentUUID": "4b8b3b8b-b418-41aa-8221-e72331b06939",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "321788af-9325-4084-af97-67d2fce45682",
+            "c7b81a28-42ea-4ff8-a51a-bd5636da5be4",
+            "c40dfe04-b73d-4091-9eb7-012077771386",
+            "210631d0-6a2b-41fd-9119-99500583e1e3",
+            "6de9c6be-73c6-4ef3-a5f8-6219d00cd473",
+            "38f03502-176c-4a63-92f7-dd810c47de0e",
+            "a45389e1-ead7-45d4-8157-250a9df9ffef"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 26811,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
